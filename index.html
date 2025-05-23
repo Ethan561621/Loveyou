@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☠️ CRITICAL SYSTEM FAILURE ☠️</title>
+    <style>
+        body {
+            background: #000;
+            color: #ff0000;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            cursor: none;
+        }
+        #glitch-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="black"/><text x="10" y="50" font-family="Courier New" font-size="10" fill="red">☠️</text></svg>');
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+        .virus-message {
+            font-size: 24px;
+            margin: 20px 0;
+            text-shadow: 0 0 10px red;
+        }
+        #countdown {
+            font-size: 72px;
+            color: red;
+            margin: 30px 0;
+            text-shadow: 0 0 20px #ff0000;
+        }
+        #fake-log {
+            text-align: left;
+            max-height: 200px;
+            overflow-y: scroll;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border: 1px solid red;
+            margin: 20px auto;
+            width: 80%;
+        }
+        button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(5px, -5px); }
+            60% { transform: translate(-5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+        .glitch-effect {
+            animation: glitch 0.1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="glitch-screen"></div>
+    
+    <h1 class="glitch-effect">☠️ SYSTEM HACKED ☠️</h1>
+    
+    <div id="countdown">10</div>
+    
+    <div id="fake-log">
+        > Initializing system breach...<br>
+        > Bypassing firewalls...<br>
+        > Accessing confidential data...<br>
+        > Downloading malware payload...<br>
+        > Encrypting files...<br>
+        > Preparing system destruction...<br>
+    </div>
+    
+    <div id="messages">
+        <p class="virus-message">YOUR DEVICE HAS BEEN COMPROMISED!</p>
+        <p class="virus-message">ALL FILES WILL BE DELETED IN: <span id="countdown">10</span> SECONDS</p>
+    </div>
+    
+    <button id="panicButton" onclick="revealPrank()">🚨 STOP ATTACK 🚨</button>
+    
+    <div id="endScreen" class="hidden">
+        <h1 style="color: lime;">😂 GOTCHA! 😂</h1>
+        <p style="color: white; font-size: 24px;">No real virus was installed.<br>This was just a PRANK!</p>
+        <p style="color: #aaa;">(Your device is completely safe.)</p>
+    </div>
+
+    <script>
+        // INTENSE GLITCH EFFECT
+        setInterval(() => {
+            const glitch = document.getElementById("glitch-screen");
+            glitch.style.opacity = Math.random() > 0.9 ? "0.2" : "0";
+        }, 50);
+
+        // FAKE COUNTDOWN TIMER
+        let seconds = 10;
+        const countdownElement = document.getElementById("countdown");
+        const countdownInterval = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                document.body.innerHTML = `
+                <div style="background: black; color: red; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <h1 style="font-size: 48px;">😂 PRANK! 😂</h1>
+                    <p style="font-size: 24px;">Your device is fine. Relax!</p>
+                </div>
+                `;
+            }
+        }, 1000);
+
+        // FAKE LOG UPDATES
+        const fakeLogUpdates = [
+            "> Injecting rootkit...",
+            "> Overheating CPU...",
+            "> Deleting photos...",
+            "> Sending data to database...",
+            "> Activating self-destruct...",
+            "> 3... 2... 1... SUCCESSFULLY DELETED"
+        ];
+        
+        let logIndex = 0;
+        const logElement = document.getElementById("fake-log");
+        
+        setInterval(() => {
+            if (logIndex < fakeLogUpdates.length) {
+                logElement.innerHTML += "<br>" + fakeLogUpdates[logIndex];
+                logElement.scrollTop = logElement.scrollHeight;
+                logIndex++;
+            }
+        }, 1500);
+
+        // REVEAL PRANK EARLY
+        function revealPrank() {
+            clearInterval(countdownInterval);
+            document.getElementById("messages").classList.add("hidden");
+            document.getElementById("panicButton").classList.add("hidden");
+            document.getElementById("endScreen").classList.remove("hidden");
+            
+            // Play victory sound (optional)
+            // new Audio('https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3').play();
+        }
+    </script>
+</body>
+</html>
